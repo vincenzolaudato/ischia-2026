@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ischia · 24 June – 1 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea:#0a6e8a;
+    --sea-deep:#084a5e;
+    --sea-light:#3fa3bd;
+    --foam:#e8f4f6;
+    --sand:#f6efe2;
+    --sand-deep:#efe3cd;
+    --terra:#d4663f;
+    --terra-deep:#b14f2c;
+    --ink:#1d2a30;
+    --ink-soft:#46565d;
+    --gold:#e0a83d;
+    --paper:#fbf7ef;
+    --shadow:0 18px 50px -22px rgba(8,74,94,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1}
+  a{color:var(--sea);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    color:#fff;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 80% at 70% 0%, #7fd0e0 0%, var(--sea-light) 28%, var(--sea) 55%, var(--sea-deep) 100%);
+  }
+  .hero .sun{
+    position:absolute;top:11%;right:14%;
+    width:130px;height:130px;border-radius:50%;
+    background:radial-gradient(circle,#fff6df 0%,#ffe9a8 45%,#f6cf6a 75%,rgba(246,207,106,0) 78%);
+    filter:blur(.3px);
+    box-shadow:0 0 90px 30px rgba(255,233,168,.55);
+  }
+  .waves{position:absolute;left:0;right:0;bottom:0;line-height:0}
+  .waves svg{width:100%;height:140px;display:block}
+  .hero-inner{position:relative;z-index:3;padding:0 8vw 13vh}
+  .eyebrow{
+    font-family:'Inter';font-weight:500;letter-spacing:.42em;text-transform:uppercase;
+    font-size:.72rem;opacity:.92;margin-bottom:1.1rem;
+  }
+  .hero h1{font-size:clamp(3.2rem,9vw,7rem);font-weight:600;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(0,40,55,.35)}
+  .hero h1 em{font-style:italic;color:#ffe1b0;font-weight:500}
+  .hero .sub{max-width:600px;margin-top:1.3rem;font-size:1.12rem;font-weight:300;opacity:.96}
+  .hero .meta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.6rem}
+  .chip{
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);
+    padding:.42rem .9rem;border-radius:999px;font-size:.82rem;font-weight:500;
+    backdrop-filter:blur(6px);
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:980px;margin:0 auto;padding:0 6vw}
+  section{padding:5rem 0 1rem}
+  .section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:.4rem}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+  .lead{color:var(--ink-soft);max-width:680px;font-size:1.05rem;margin-top:.4rem}
+
+  /* ---------- AT A GLANCE ---------- */
+  .glance{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem;margin-top:2rem;
+  }
+  .gcard{
+    background:#fff;border-radius:16px;padding:1.05rem 1.1rem;box-shadow:var(--shadow);
+    border:1px solid var(--sand-deep);position:relative;overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .gcard:hover{transform:translateY(-4px)}
+  .gcard .d{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .gcard .t{font-family:'Fraunces';font-size:1.12rem;margin-top:.25rem;color:var(--ink)}
+  .gcard .e{font-size:.85rem;color:var(--ink-soft);margin-top:.3rem}
+  .gcard .tag{position:absolute;top:0;right:0;background:var(--sea);color:#fff;font-size:.62rem;padding:.2rem .5rem;border-bottom-left-radius:10px;letter-spacing:.08em;font-weight:600}
+  .gcard.fixed .tag{background:var(--terra)}
+
+  /* ---------- DAY CARDS ---------- */
+  .day{
+    background:#fff;border-radius:22px;margin:1.6rem 0;box-shadow:var(--shadow);
+    border:1px solid var(--sand-deep);overflow:hidden;scroll-margin-top:80px;
+  }
+  .day-top{
+    display:flex;align-items:center;gap:1.2rem;padding:1.5rem 1.8rem;cursor:pointer;
+    background:linear-gradient(100deg,var(--foam),#fff);
+  }
+  .day-num{
+    flex:none;width:62px;height:62px;border-radius:16px;
+    background:var(--sea);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px -8px var(--sea);
+  }
+  .day-num .dow{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+  .day-num .dd{font-family:'Fraunces';font-size:1.5rem;line-height:1}
+  .day-head-txt{flex:1}
+  .day-head-txt .kicker{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:600}
+  .day-head-txt h3{font-size:1.4rem;margin-top:.15rem}
+  .day-head-txt .micro{font-size:.9rem;color:var(--ink-soft);margin-top:.2rem}
+  .toggle{flex:none;color:var(--sea);font-size:1.4rem;transition:transform .3s ease}
+  .day.open .toggle{transform:rotate(45deg)}
+  .day-body{display:none;padding:0 1.8rem 1.9rem}
+  .day.open .day-body{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+  .block{margin-top:1.4rem}
+  .block h4{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--sea-deep);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+  .block p{color:var(--ink-soft)}
+  .block p + p{margin-top:.6rem}
+
+  .pins{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+  .pin{
+    display:inline-flex;align-items:center;gap:.4rem;
+    background:var(--sand);border:1px solid var(--sand-deep);
+    padding:.4rem .8rem;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--ink);
+  }
+  .pin:hover{background:var(--sea);color:#fff;border-color:var(--sea);text-decoration:none}
+  .pin svg{width:13px;height:13px}
+
+  .callout{
+    margin-top:1.3rem;border-radius:14px;padding:1rem 1.15rem 1rem 1.2rem;
+    border-left:4px solid var(--gold);background:#fdf6e6;
+  }
+  .callout.tip{border-left-color:var(--sea-light);background:var(--foam)}
+  .callout.history{border-left-color:var(--terra);background:#fbeee7}
+  .callout .lbl{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ink);opacity:.7;display:flex;align-items:center;gap:.45rem}
+  .callout p{margin-top:.4rem;color:var(--ink-soft);font-size:.95rem}
+
+  .dinner{
+    margin-top:1.4rem;border:1px dashed var(--terra);border-radius:14px;
+    padding:.9rem 1.15rem;background:#fff7f3;display:flex;align-items:center;gap:.8rem;
+  }
+  .dinner .ico{font-size:1.3rem}
+  .dinner .txt{font-size:.92rem;color:var(--terra-deep)}
+  .dinner .txt b{color:var(--ink)}
+
+  /* flip control */
+  .flip-banner{
+    background:linear-gradient(100deg,var(--sea-deep),var(--sea));color:#fff;border-radius:18px;
+    padding:1.4rem 1.6rem;margin-top:2rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;
+  }
+  .flip-banner p{font-size:.95rem;opacity:.95;max-width:560px}
+  .flip-btn{
+    background:#fff;color:var(--sea-deep);border:none;border-radius:999px;padding:.7rem 1.3rem;
+    font-family:'Inter';font-weight:600;font-size:.9rem;cursor:pointer;white-space:nowrap;
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.4);transition:transform .15s ease;
+  }
+  .flip-btn:hover{transform:translateY(-2px)}
+
+  /* ---------- LOGISTICS ---------- */
+  .logi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.6rem}
+  .logi .lc{background:#fff;border:1px solid var(--sand-deep);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:var(--shadow)}
+  .logi .lc h4{font-family:'Fraunces';font-size:1.1rem;margin-bottom:.4rem;color:var(--sea-deep)}
+  .logi .lc p{font-size:.9rem;color:var(--ink-soft)}
+
+  footer{
+    margin-top:4rem;background:var(--sea-deep);color:#fff;text-align:center;padding:3rem 6vw 2.4rem;
+    position:relative;
+  }
+  footer .wv{position:absolute;top:-1px;left:0;right:0;line-height:0;transform:rotate(180deg)}
+  footer .wv svg{width:100%;height:60px;display:block}
+  footer h3{font-size:1.6rem;margin-bottom:.6rem;color:#ffe1b0}
+  footer p{opacity:.85;font-size:.92rem;max-width:520px;margin:0 auto}
+  .legend{font-size:.78rem;opacity:.7;margin-top:1.6rem}
+
+  /* ---------- EAT ---------- */
+  .eat-group{margin-top:2.4rem}
+  .eat-group .gh{display:flex;align-items:center;gap:.6rem;font-family:'Fraunces';font-size:1.35rem;color:var(--sea-deep);margin-bottom:.15rem}
+  .eat-group .gs{color:var(--ink-soft);font-size:.93rem;margin-bottom:1.1rem;max-width:640px}
+  .eat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:1rem}
+  .ecard{background:#fff;border:1px solid var(--sand-deep);border-radius:16px;padding:1.1rem 1.2rem;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s ease}
+  .ecard:hover{transform:translateY(-3px)}
+  .ecard .en{font-family:'Fraunces';font-size:1.12rem;color:var(--ink);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;line-height:1.2}
+  .ecard .loc{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-top:.25rem}
+  .ecard .ed{font-size:.9rem;color:var(--ink-soft);margin:.55rem 0 .9rem}
+  .ecard .maplink{margin-top:auto;align-self:flex-start;font-size:.82rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem;background:var(--sand);border:1px solid var(--sand-deep);padding:.42rem .85rem;border-radius:999px;color:var(--ink)}
+  .ecard .maplink:hover{background:var(--sea);color:#fff;border-color:var(--sea);text-decoration:none}
+  .nearbase{background:var(--sea);color:#fff;font-size:.58rem;padding:.2rem .5rem;border-radius:999px;letter-spacing:.05em;font-weight:600;text-transform:uppercase}
+  .splurge{background:var(--gold);color:#3a2c08;font-size:.58rem;padding:.2rem .5rem;border-radius:999px;letter-spacing:.05em;font-weight:600;text-transform:uppercase}
+
+  @media(max-width:560px){
+    .day-top{padding:1.1rem 1.1rem;gap:.8rem}
+    .day-body{padding:0 1.1rem 1.5rem}
+    .hero-inner{padding-bottom:16vh}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="sun"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">A week on the green island · 24 Jun – 1 Jul 2026</div>
+    <h1>Isch<em>i</em>a</h1>
+    <p class="sub">Two of us, a car, and a whitewashed base in Sant'Angelo. Salt water, slow lunches, a glass of island wine at sunset — and two days at sea. <em>La dolce far niente</em>, done properly.</p>
+    <div class="meta">
+      <span class="chip">🏠 Base · Sant'Angelo</span>
+      <span class="chip">🚗 Car for the week</span>
+      <span class="chip">🏖️ Beach-first</span>
+      <span class="chip">🍷 Food &amp; wine</span>
+      <span class="chip">⛵ 2 days at sea</span>
+    </div>
+  </div>
+  <div class="waves">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fbf7ef" d="M0,64 C240,128 480,16 720,48 C960,80 1200,144 1440,80 L1440,140 L0,140 Z"/>
+      <path fill="#fbf7ef" opacity="0.55" d="M0,96 C240,40 480,120 720,96 C960,72 1200,32 1440,72 L1440,140 L0,140 Z"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ===================== INTRO / GLANCE ===================== -->
+<section id="glance" class="wrap">
+  <div class="section-head"><h2>The week at a glance</h2></div>
+  <p class="lead">Only two "big" outings — Capri and the Procida + Ischia boat day — whichever order the boat availability decides. Everything else is a beach, a swim, a sunset, a long table. Tap any day to open it.</p>
+
+  <div class="glance">
+    <a class="gcard fixed" href="#d24"><span class="tag">FIXED</span><div class="d">Wed 24</div><div class="t">Arrival</div><div class="e">Car · check-in · Maronti</div></a>
+    <a class="gcard" href="#d25"><span class="tag" id="g25">Sea day</span><div class="d">Thu 25</div><div class="t" id="t25">Capri / Boat</div><div class="e">Full day out</div></a>
+    <a class="gcard" href="#d26"><span class="tag">Beach</span><div class="d">Fri 26</div><div class="t">West coast</div><div class="e">Citara · Soccorso sunset</div></a>
+    <a class="gcard" href="#d27"><span class="tag">Beach</span><div class="d">Sat 27</div><div class="t">San Montano</div><div class="e">Turquoise · Lacco Ameno</div></a>
+    <a class="gcard" href="#d28"><span class="tag">Beach</span><div class="d">Sun 28</div><div class="t">Cartaromana</div><div class="e">Snorkel the ruins</div></a>
+    <a class="gcard fixed" href="#d29"><span class="tag">FIXED</span><div class="d">Mon 29</div><div class="t">Home day</div><div class="e">Fattoria Greca · Sorgeto</div></a>
+    <a class="gcard" href="#d30"><span class="tag" id="g30">Sea day</span><div class="d">Tue 30</div><div class="t" id="t30">Boat / Capri</div><div class="e">Full day out</div></a>
+    <a class="gcard fixed" href="#d1"><span class="tag">FIXED</span><div class="d">Wed 1</div><div class="t">Departure</div><div class="e">13:00 boat → Napoli</div></a>
+  </div>
+
+  <div class="flip-banner">
+    <p><strong>Capri &amp; the boat day are a flippable pair.</strong> Lock the order once your private Procida + Ischia tour confirms its date, then hit the button so this whole page matches.</p>
+    <button class="flip-btn" id="flipBtn">🔄 Swap 25 ↔ 30</button>
+  </div>
+</section>
+
+<!-- ===================== DAYS ===================== -->
+<section class="wrap" style="padding-top:3.5rem">
+  <div class="section-head"><h2>Day by day</h2></div>
+
+  <!-- DAY 24 -->
+  <article class="day open" id="d24">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Wed</span><span class="dd">24</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Arrival · settle in</div>
+        <h3>Touchdown &amp; the first swim</h3>
+        <div class="micro">Boat in at 1pm → car → Sant'Angelo check-in → Maronti</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>📍 The flow</h4>
+        <p>Arrive 13:00, collect the rental car at the port, and drive ~25–30 min south to <strong>Sant'Angelo</strong>. The village itself is car-free — you park up top and walk down, so travel light for the check-in and come back for the rest.</p>
+        <p>Once you've dropped the bags, ease in with the closest, easiest beach on the island: <strong>Maronti</strong>, a long ribbon of dark volcanic sand a few minutes below the village. First float in the Tyrrhenian, then back up to Sant'Angelo for a sunset spritz on the little harbour square.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Sant%27Angelo+Ischia">📍 Sant'Angelo</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+dei+Maronti+Ischia">📍 Maronti Beach</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Porto+di+Ischia">📍 Ischia Porto (car pickup)</a>
+        </div>
+      </div>
+      <div class="callout history">
+        <div class="lbl">⚓ A little history</div>
+        <p>Sant'Angelo grew up as a fishing hamlet under its dramatic <em>Torre</em> — the rocky islet tied to the village by a thin sand isthmus. No cars have ever really fit down there, which is exactly why it stayed so pretty while the rest of the island modernised.</p>
+      </div>
+      <div class="callout tip">
+        <div class="lbl">💡 Local tip</div>
+        <p>Maronti's eastern end, near the <em>Fumarole</em>, has natural volcanic steam vents — the sand is genuinely hot to the touch, and a few spots steam at low tide. Don't dig deep with bare feet there.</p>
+      </div>
+      <div class="block">
+        <h4>🍴 Lunch on the sand</h4>
+        <p>Right on Maronti, a few steps from the towel. <strong>Lido Sammy</strong> is a raised wooden deck over the sand with a sweep of view back to Sant'Angelo; <strong>Bagno Antonio</strong> (a <em>Talented Mr. Ripley</em> filming spot) brings homemade plates to your sunbed. A panino and a cold beer is perfectly in keeping — and Maronti runs cheaper than the rest of the island.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Lido+Sammy+Maronti+Ischia">📍 Lido Sammy</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bagno+Antonio+Maronti+Ischia">📍 Bagno Antonio</a>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🍝</span><div class="txt"><b>Dinner:</b> to lock — keeping it easy &amp; close on night one (Sant'Angelo). <i>We'll choose this together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 25 -->
+  <article class="day" id="d25">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Thu</span><span class="dd">25</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Big sea day · <span class="sealabel" data-slot="A">Capri</span><span class="sealabel" data-slot="B">Boat tour</span></div>
+        <h3 class="seatitle" data-slot="A">Capri, the whole day</h3>
+        <h3 class="seatitle" data-slot="B">Procida + Ischia by boat</h3>
+        <div class="micro seamicro" data-slot="A">Morning ferry out · back late afternoon</div>
+        <div class="micro seamicro" data-slot="B">Full day on the water</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <!-- CAPRI CONTENT -->
+      <div class="seacontent" data-slot="A">
+        <div class="block">
+          <h4>⛴️ Getting there</h4>
+          <p>Direct seasonal ferries run Ischia → Capri in roughly <strong>50 minutes</strong> (first boats ~9am, returns in the afternoon; ~€27+ each way). It's a popular route in summer, so <strong>book online a few days ahead</strong> and re-check the exact times the day before — schedules shift. A weekday like this is deliberately calmer than the weekend crush.</p>
+          <div class="pins">
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Capri+Marina+Grande">📍 Marina Grande, Capri</a>
+            <a class="pin" target="_blank" href="https://www.capri.com/en/t/ischia/capri">⛴️ Ferry times &amp; tickets</a>
+          </div>
+        </div>
+        <div class="block">
+          <h4>🌅 A relaxed Capri, our way</h4>
+          <p>Skip the march-everywhere checklist. A lovely food-and-sea day: a <strong>small-boat tour around the island</strong> (the Faraglioni stacks, sea caves, a swim stop — and the Blue Grotto if the sea is flat and the queue sane), then up to the <strong>Piazzetta</strong> for the people-watching, the <strong>Gardens of Augustus</strong> for the Faraglioni view, and a long lunch. If there's appetite, the chairlift up to <strong>Monte Solaro</strong> from Anacapri is the island's best panorama.</p>
+        </div>
+        <div class="callout history">
+          <div class="lbl">🏛️ A little history</div>
+          <p>Emperor Tiberius ran the entire Roman Empire from Capri for his last decade, from the cliff-top <em>Villa Jovis</em>. The island has been a bolt-hole for emperors, poets and film stars ever since — the Faraglioni rocks even have their own resident blue lizard found nowhere else on Earth.</p>
+        </div>
+        <div class="callout tip">
+          <div class="lbl">💡 Local tip</div>
+          <p>The Blue Grotto only works in calm seas and closes in any swell — treat it as a bonus, not a plan. And eat <em>away</em> from the Piazzetta: walk five minutes down any side lane and prices halve.</p>
+        </div>
+      </div>
+      <!-- BOAT CONTENT -->
+      <div class="seacontent" data-slot="B" hidden>
+        <div class="block">
+          <h4>⛵ Private boat · Procida + around Ischia</h4>
+          <p>Your full-day private charter (booking in your hands). A dream itinerary if they'll do it: slip out of Sant'Angelo, swim at <strong>Sorgeto</strong> and the cliffs of the south-west, round the island past Forio, then cross to tiny <strong>Procida</strong> — the most cinematic of the three islands — for <strong>Marina Corricella</strong> and a swim at <strong>Pozzo Vecchio</strong> (the "<em>Il Postino</em>" beach). Lunch aboard or in Corricella.</p>
+          <div class="pins">
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Marina+Corricella+Procida">📍 Marina Corricella</a>
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+Pozzo+Vecchio+Procida">📍 Pozzo Vecchio beach</a>
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Baia+di+Sorgeto+Ischia">📍 Sorgeto (swim stop)</a>
+          </div>
+        </div>
+        <div class="callout history">
+          <div class="lbl">🎬 A little history</div>
+          <p>Procida was <strong>Italy's Capital of Culture in 2022</strong> — pastel fishermen's houses stacked over Corricella harbour, painted bright so sailors could spot their own home from the sea. It starred in <em>Il Postino</em> and <em>The Talented Mr. Ripley</em>, yet stays gloriously untouristy.</p>
+        </div>
+        <div class="callout tip">
+          <div class="lbl">💡 Local tip</div>
+          <p>Confirm with the skipper whether lunch is aboard or ashore, and whether snorkel gear is included — Procida's coves and the Ischia south coast are lovely for an easy surface snorkel.</p>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🚿</span><div class="txt"><b>Dinner:</b> back to Sant'Angelo first to shower &amp; change, then a near-base dinner. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 26 -->
+  <article class="day" id="d26">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Fri</span><span class="dd">26</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Beach · wine · sunset</div>
+        <h3>West coast &amp; the golden church</h3>
+        <div class="micro">Citara or Cava dell'Isola · optional tasting · Soccorso at sundown</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>🏖️ The beach</h4>
+        <p>Pick by mood. <strong>Citara</strong> is a broad sandy bay facing due west — easy, full-service, made for a slow beach day that rolls into the sunset. <strong>Cava dell'Isola</strong> is the wilder, free, cliff-backed cove a little north — younger crowd, fewer frills, gorgeous water.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+di+Citara+Forio">📍 Citara Beach</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cava+dell%27Isola+Forio">📍 Cava dell'Isola</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>🍷 Optional: a wine stop</h4>
+        <p>If you're up for it, the terraced vines of <strong>Pietratorcia</strong> (between Panza and Forio) do tastings of Ischia DOC whites grown on volcanic soil — a relaxed late-afternoon detour on the way back up. Entirely optional; only if the day wants it.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Pietratorcia+Forio+Ischia">📍 Pietratorcia winery</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>🌇 Sunset</h4>
+        <p>End at the <strong>Chiesa del Soccorso</strong> in Forio — a tiny whitewashed church on a spur over the sea, and the island's classic sunset spot. Be on its terrace as the sun drops; the whole village glows after.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chiesa+del+Soccorso+Forio">📍 Chiesa del Soccorso</a>
+        </div>
+      </div>
+      <div class="callout history">
+        <div class="lbl">⚓ A little history</div>
+        <p>The Soccorso is a sailors' votive church — its walls are lined with maiolica tiles and ex-voto offerings from fishermen who made it home. The name itself means "the rescue."</p>
+      </div>
+      <div class="block">
+        <h4>🍴 Lunch on the sand</h4>
+        <p>At <strong>Citara</strong>: <strong>La Citarea</strong> sits right on one of the bay's free beaches — panoramic terrace, fresh fish, feet-in-the-sand lunch. At wilder <strong>Cava dell'Isola</strong> there's just a simple beach kiosk for a panino and a granita, which is honestly all you need on a cove day.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+La+Citarea+Citara+Forio+Ischia">📍 La Citarea</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cava+dell%27Isola+beach+Forio+Ischia">📍 Cava dell'Isola kiosk</a>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🍷</span><div class="txt"><b>Dinner:</b> Forio old town is right there — but you may prefer to shower &amp; change in Sant'Angelo first. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 27 -->
+  <article class="day" id="d27">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Sat</span><span class="dd">27</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Beach · the turquoise day</div>
+        <h3>San Montano &amp; Lacco Ameno</h3>
+        <div class="micro">The calmest bay on the island · stroll &amp; apero when you've had enough sun</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>🏖️ The beach</h4>
+        <p><strong>Baia di San Montano</strong> (Lacco Ameno) is the most sheltered, most turquoise bay on Ischia — a horseshoe of calm, shallow, clear water that's perfect for nothing-but-floating. Sandy bottom, gentle entry, easy.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Baia+di+San+Montano+Lacco+Ameno">📍 Baia di San Montano</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>🚶 When you're sun-tired</h4>
+        <p>Wander into <strong>Lacco Ameno</strong>, the island's most elegant little town — pastel facades, a smart seafront, and <strong>Il Fungo</strong>, the mushroom-shaped tuff rock sitting just offshore. Aperitivo on the water as the afternoon cools.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Il+Fungo+Lacco+Ameno">📍 Il Fungo</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Lacco+Ameno+Ischia">📍 Lacco Ameno centre</a>
+        </div>
+      </div>
+      <div class="callout history">
+        <div class="lbl">🏛️ A little history</div>
+        <p>This is where <strong>Western civilisation's Greek story begins</strong>: nearby Monte di Vico was <em>Pithekoussai</em>, one of the earliest Greek colonies in the West (8th c. BC). The famous "Nestor's Cup," carrying one of the oldest known Greek inscriptions, was dug up here — it's in the Villa Arbusto museum just up the hill. In the 1950s, publisher Angelo Rizzoli turned the town into a jet-set spa resort.</p>
+      </div>
+      <div class="block">
+        <h4>🍴 Lunch on the sand</h4>
+        <p>The bay's own beach restaurant (<strong>Stabilimento S. Montano</strong>) has a self-service bar and a fish-focused kitchen right on the sand — no need to leave the turquoise. Or pack a panino; this is a bay made for lingering all afternoon.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bar+Ristorante+San+Montano+Lacco+Ameno+Ischia">📍 Lido San Montano</a>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🍤</span><div class="txt"><b>Dinner:</b> Lacco Ameno has lovely seafood tables — or drive back south to shower &amp; change. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 28 -->
+  <article class="day" id="d28">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Sun</span><span class="dd">28</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Beach · first-ever snorkel</div>
+        <h3>Cartaromana &amp; the sunken city</h3>
+        <div class="micro">Swim under the castle · float over Roman ruins</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>🏖️ The beach</h4>
+        <p><strong>Cartaromana</strong> sits right beneath the <strong>Castello Aragonese</strong> — arguably the most beautiful view-from-a-towel on the island. Calm, shallow, sheltered water and a couple of relaxed beach-bar tables. You get the postcard castle without ever booking a "tour."</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+di+Cartaromana+Ischia">📍 Cartaromana Beach</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Castello+Aragonese+Ischia">📍 Castello Aragonese</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>🤿 Snorkelling — total beginners welcome</h4>
+        <p>This is the friendliest place imaginable for a first mask. The water is calm and shallow, and the Roman ruins of <strong>Aenaria</strong> sit at ~6m, so you see them clearly while just floating on the surface — no diving, no skill, you can wear a vest and never put your head under if you don't want to. Practise breathing through the tube where you can still stand, then drift out.</p>
+        <p>Best first-timer option: a <strong>guided snorkel over Aenaria</strong> (~40 min, ~€40–45pp, booking required) — mask &amp; fins provided, a guide beside you, and they show the natural CO₂ "vents" fizzing up beneath the castle. Prefer to stay dry? A <strong>glass-bottom boat</strong> (~70 min, ~€30pp) shows the same ruins through the hull.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.ischiainsider.com/en/e/aenaria-ischia-s-underwater-city">ℹ️ About Aenaria</a>
+          <a class="pin" target="_blank" href="https://www.tourangelsnapoli.it/tour/ischia-snorkeling-among-the-sunken-treasures-of-aenaria/?lang=en">🤿 Snorkel tour</a>
+        </div>
+      </div>
+      <div class="callout history">
+        <div class="lbl">🏛️ A little history</div>
+        <p>Aenaria was a Roman port lost to volcanic subsidence and forgotten for almost 2,000 years — rediscovered only in the 1970s and properly excavated in the last decade. Above it, the <strong>Castello Aragonese</strong> has been fortified since 474 BC; its causeway was built by Alfonso of Aragon in 1441.</p>
+      </div>
+      <div class="callout tip">
+        <div class="lbl">💡 Local tip</div>
+        <p>Book the guided snorkel ahead — reservations are required and morning slots go first. Bring water shoes; the entry has a few stones.</p>
+      </div>
+      <div class="block">
+        <h4>🍴 Lunch on the sand</h4>
+        <p><strong>Cocò Mare</strong> is the dream here — directly on Cartaromana bay, spaghetti alle vongole with the Castello filling the view (reachable on foot, or by the little boat from Ischia Ponte). Prefer to stay light before the snorkel? A casual beach-bar panino does the job just as well.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Coco+Mare+Cartaromana+Ischia+Ponte">📍 Cocò Mare</a>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🏰</span><div class="txt"><b>Dinner:</b> Ischia Ponte is gorgeous after dark with the lit castle — or back to base to freshen up. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 29 -->
+  <article class="day" id="d29">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Mon</span><span class="dd">29</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Home day · fixed</div>
+        <h3>Sant'Angelo, farm lunch &amp; hot springs</h3>
+        <div class="micro">Solo morning walk · Fattoria Greca · Sorgeto dip · maybe Maronti</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>🌅 Morning</h4>
+        <p>Stay around Sant'Angelo (work meeting in play). A solo coastal walk while the call happens, an espresso on the square, an easy beach hour.</p>
+      </div>
+      <div class="block">
+        <h4>🍽️ Lunch · Antica Fattoria Greca</h4>
+        <p>Up onto the <strong>Punta Chiarito</strong> headland for farm-to-table lunch at the <strong>Antica Fattoria Greca (Az. Agricola Ruffano)</strong> — their own produce, big views over the sea, exactly the slow island meal this day is built around.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://maps.app.goo.gl/KtqZu9GdkPnxV78w9">📍 Antica Fattoria Greca</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>♨️ Sorgeto Bay</h4>
+        <p>The farm sits <em>directly above</em> Sorgeto — a cove where natural hot springs bubble straight into the sea, mixing with the waves into warm rock pools. A short cooling dip is the move (it's hot, rocky, and umbrella-free), then onward.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Baia+di+Sorgeto+Ischia">📍 Baia di Sorgeto</a>
+        </div>
+      </div>
+      <div class="block">
+        <h4>🏖️ Then</h4>
+        <p>If it's too hot to linger, drift back toward Sant'Angelo and a small beach, or to <strong>Maronti</strong> for the late-afternoon shade — decide on the day.</p>
+      </div>
+      <div class="callout tip">
+        <div class="lbl">💡 Local tip</div>
+        <p>Sorgeto has <strong>no shade and no umbrellas</strong>, and the springs are genuinely hot. Bring water shoes (rocky entry), go for a short swim rather than a sunbathe, and take water. You can also reach it by <strong>taxi-boat from Sant'Angelo (~€7pp)</strong> to skip the ~200 steps in the heat.</p>
+      </div>
+      <div class="callout history">
+        <div class="lbl">🏺 A little history</div>
+        <p>Punta Chiarito hides a Bronze/Iron Age settlement — and Ischia's whole spa culture rests on the same volcanic plumbing that heats Sorgeto. People have been bathing in these waters since antiquity.</p>
+      </div>
+      <div class="dinner"><span class="ico">🏠</span><div class="txt"><b>Dinner:</b> home turf — a relaxed Sant'Angelo evening. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 30 -->
+  <article class="day" id="d30">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Tue</span><span class="dd">30</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Big sea day · <span class="sealabel" data-slot="B">Boat tour</span><span class="sealabel" data-slot="A">Capri</span></div>
+        <h3 class="seatitle" data-slot="B">Procida + Ischia by boat</h3>
+        <h3 class="seatitle" data-slot="A">Capri, the whole day</h3>
+        <div class="micro seamicro" data-slot="B">Full day on the water</div>
+        <div class="micro seamicro" data-slot="A">Morning ferry out · back late afternoon</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <!-- mirrors day 25, opposite slot -->
+      <div class="seacontent" data-slot="B">
+        <div class="block">
+          <h4>⛵ Private boat · Procida + around Ischia</h4>
+          <p>Your full-day private charter (booking in your hands). Slip out of Sant'Angelo, swim at <strong>Sorgeto</strong> and the south-west cliffs, round the island past Forio, then cross to tiny <strong>Procida</strong> for <strong>Marina Corricella</strong> and a swim at <strong>Pozzo Vecchio</strong> (the "<em>Il Postino</em>" beach). Lunch aboard or in Corricella.</p>
+          <div class="pins">
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Marina+Corricella+Procida">📍 Marina Corricella</a>
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Spiaggia+Pozzo+Vecchio+Procida">📍 Pozzo Vecchio beach</a>
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Baia+di+Sorgeto+Ischia">📍 Sorgeto (swim stop)</a>
+          </div>
+        </div>
+        <div class="callout history">
+          <div class="lbl">🎬 A little history</div>
+          <p>Procida was <strong>Italy's Capital of Culture in 2022</strong> — pastel fishermen's houses stacked over Corricella, painted bright so sailors could pick out their own from the sea. <em>Il Postino</em> and <em>The Talented Mr. Ripley</em> were filmed here, yet it stays wonderfully off the tourist trail.</p>
+        </div>
+        <div class="callout tip">
+          <div class="lbl">💡 Local tip</div>
+          <p>Confirm lunch (aboard vs ashore) and snorkel gear with the skipper. The south coast of Ischia and Procida's coves are perfect for an easy surface snorkel after the 28th's practice run.</p>
+        </div>
+      </div>
+      <div class="seacontent" data-slot="A" hidden>
+        <div class="block">
+          <h4>⛴️ Capri, the whole day</h4>
+          <p>Direct seasonal ferry ~50 min (first boats ~9am, afternoon returns, ~€27+ each way) — <strong>book ahead</strong> and re-check times the day before. A small-boat island tour (Faraglioni, sea caves, a swim, Blue Grotto if calm), the Piazzetta, the Gardens of Augustus, a long lunch, and Monte Solaro if there's appetite.</p>
+          <div class="pins">
+            <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Capri+Marina+Grande">📍 Marina Grande, Capri</a>
+            <a class="pin" target="_blank" href="https://www.capri.com/en/t/ischia/capri">⛴️ Ferry times &amp; tickets</a>
+          </div>
+        </div>
+        <div class="callout history">
+          <div class="lbl">🏛️ A little history</div>
+          <p>Tiberius ruled Rome from Capri's cliff-top Villa Jovis for a decade. An emperors-and-film-stars island ever since — with its own blue lizard on the Faraglioni found nowhere else on Earth.</p>
+        </div>
+        <div class="callout tip">
+          <div class="lbl">💡 Local tip</div>
+          <p>Blue Grotto needs calm seas — treat it as a bonus. Eat off the Piazzetta: a few steps down a side lane and prices drop fast.</p>
+        </div>
+      </div>
+      <div class="dinner"><span class="ico">🚿</span><div class="txt"><b>Dinner:</b> back to Sant'Angelo to shower &amp; change, then a near-base table. <i>To lock together.</i></div></div>
+    </div>
+  </article>
+
+  <!-- DAY 1 JULY -->
+  <article class="day" id="d1">
+    <div class="day-top">
+      <div class="day-num"><span class="dow">Wed</span><span class="dd">1</span></div>
+      <div class="day-head-txt">
+        <div class="kicker">Departure · fixed</div>
+        <h3>Last swim &amp; the boat home</h3>
+        <div class="micro">Morning free · drop car · 13:00 boat → Napoli → airport → Zürich</div>
+      </div>
+      <div class="toggle">+</div>
+    </div>
+    <div class="day-body">
+      <div class="block">
+        <h4>🧳 The morning</h4>
+        <p>One last espresso and, if there's time, a final quick swim near Sant'Angelo. Then pack up, drive to the port, return the rental car, and make the <strong>13:00 boat Ischia → Napoli</strong>. Straight on to the airport for the flight back to Zürich.</p>
+        <div class="pins">
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Porto+di+Ischia">📍 Ischia Porto</a>
+          <a class="pin" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Napoli+Beverello+port">📍 Napoli port (Beverello)</a>
+        </div>
+      </div>
+      <div class="callout tip">
+        <div class="lbl">💡 Local tip</div>
+        <p>Build in a buffer: be at the port ~40 min before the 13:00 sailing with the car return done, and confirm whether you depart from Ischia Porto or Casamicciola — they're different harbours.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== WHERE TO EAT ===================== -->
+<section class="wrap" id="eat" style="padding-top:3.5rem">
+  <div class="section-head"><h2>Where to eat</h2></div>
+  <p class="lead">The shortlist, by craving rather than by day — pin any of them and decide on the night. <span class="nearbase">Near base</span> = an easy hop from Sant'Angelo; <span class="splurge">Splurge</span> = your dressy night.</p>
+
+  <!-- SEAFOOD -->
+  <div class="eat-group">
+    <div class="gh">🐟 Seafood by the sea</div>
+    <div class="gs">Catch-of-the-day, <em>acqua pazza</em>, spaghetti ai frutti di mare, sea urchin linguine — eaten with your feet practically in the water.</div>
+    <div class="eat-grid">
+      <div class="ecard">
+        <div class="en">Casa Celestino <span class="nearbase">Near base</span><span class="splurge">Splurge</span></div>
+        <div class="loc">Sant'Angelo</div>
+        <div class="ed">The village's refined seafood address — elegant plates, raw fish and a terrace hanging over the harbour. Your one dressy night, right at home.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Casa+Celestino+Sant%27Angelo+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">La Conchiglia <span class="nearbase">Near base</span></div>
+        <div class="loc">Sant'Angelo</div>
+        <div class="ed">A Sant'Angelo classic for fresh fish with breathtaking views over the bay and the Torre — relaxed but special.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+La+Conchiglia+Sant%27Angelo+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Deus Neptunus <span class="nearbase">Near base</span></div>
+        <div class="loc">Sant'Angelo</div>
+        <div class="ed">Breezy white-and-blue terrace over the village lanes, dependable seafood and a lovely apero perch.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Deus+Neptunus+Sant%27Angelo+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Aglio Olio &amp; Pomodoro</div>
+        <div class="loc">Ischia Ponte</div>
+        <div class="ed">Chic-but-traditional fish eatery at the edge of Ischia Ponte — classic recipes, catch of the day. Perfect after the Cartaromana day (28th).</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Aglio+Olio+e+Pomodoro+Ischia+Ponte">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Il Monastero <span class="splurge">Splurge</span></div>
+        <div class="loc">Castello Aragonese</div>
+        <div class="ed">Inside the castle itself — one of the best views on the island, fish landed by the boats just below. A bucket-list table for the 28th.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Il+Monastero+Castello+Aragonese+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Umberto a Mare</div>
+        <div class="loc">Forio · by the Soccorso</div>
+        <div class="ed">Right beside the sunset church — fabulous fresh fish with the sea filling every window. Made for the 26th.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Umberto+a+Mare+Forio+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Saturnino <span class="splurge">Splurge</span></div>
+        <div class="loc">Forio</div>
+        <div class="ed">Five decades of Ischian cooking, elegant, sea views — traditional recipes given a modern polish.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Saturnino+Forio+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">La Cantina del Mare</div>
+        <div class="loc">Lacco Ameno</div>
+        <div class="ed">"A true Ischian experience" — really fresh seafood and exceptional pasta. Ideal close to the San Montano day (27th).</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=La+Cantina+del+Mare+Lacco+Ameno+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Le Stufe</div>
+        <div class="loc">Lacco Ameno</div>
+        <div class="ed">Cosy local spot over the water — seafood antipasto, spaghettini alle vongole, amberjack. Another great 27th option.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Le+Stufe+Lacco+Ameno+Ischia">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRADITIONS -->
+  <div class="eat-group">
+    <div class="gh">🐰 Island traditions</div>
+    <div class="gs">The other Ischia — rural, inland, no seafood. Pit-roasted rabbit (<em>coniglio all'ischitana</em>), grilled meats, house wine, big views.</div>
+    <div class="eat-grid">
+      <div class="ecard">
+        <div class="en">Il Focolare</div>
+        <div class="loc">Fiaiano · the institution</div>
+        <div class="ed">The temple of coniglio all'ischitana — Slow Food–recognised, d'Ambra family, made famous by Stanley Tucci. The one "must do once" meal. Book ahead.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Il+Focolare+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Il Bracconiere <span class="nearbase">Near base</span></div>
+        <div class="loc">Serrara Fontana</div>
+        <div class="ed">Hilltop above Sant'Angelo — rabbit, grilled meats, house wine and a knockout panorama down to the sea. Closest of the traditions to base.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Il+Bracconiere+Serrara+Fontana+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Montecorvo</div>
+        <div class="loc">Forio hills</div>
+        <div class="ed">Half-carved into the rock, candle-lit and romantic — grilled meats and rabbit, the inland counterpoint to all the fish.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Montecorvo+Forio+Ischia">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIZZA -->
+  <div class="eat-group">
+    <div class="gh">🍕 Pizza &amp; casual</div>
+    <div class="gs">24-hour-leavened Neapolitan dough and easy local nights when you don't feel like a production.</div>
+    <div class="eat-grid">
+      <div class="ecard">
+        <div class="en">Da Pasquale <span class="nearbase">Near base</span></div>
+        <div class="loc">Sant'Angelo</div>
+        <div class="ed">Hidden in the village steps — unpretentious, beloved, the cheapest and easiest good seat in town. The no-effort home night.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Da+Pasquale+Sant%27Angelo+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">Pizzeria Di Meglio</div>
+        <div class="loc">Forio</div>
+        <div class="ed">Widely called the island's best pizza — light, 24h-leavened Neapolitan dough, always full of locals. Time a Forio day around it.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Di+Meglio+Forio+Ischia">📍 Maps</a>
+      </div>
+      <div class="ecard">
+        <div class="en">La Tinaia</div>
+        <div class="loc">Forio</div>
+        <div class="ed">Eat-where-the-families-eat courtyard — no frills, very local, very kind on the wallet.</div>
+        <a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=La+Tinaia+Forio+Ischia">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOGISTICS ===================== -->
+<section class="wrap" id="logistics">
+  <div class="section-head"><h2>Good to know</h2></div>
+  <div class="logi">
+    <div class="lc"><h4>🚗 The car</h4><p>Great for reaching beaches, but Sant'Angelo is car-free at the bottom — park up top and walk down. Roads are narrow and switchbacked; drive slow and don't rush the coastal bends.</p></div>
+    <div class="lc"><h4>⛵ Two sea days</h4><p>Capri + the Procida/Ischia boat. Lock the order when the charter confirms, then hit "Swap 25 ↔ 30" up top so the page follows.</p></div>
+    <div class="lc"><h4>🤿 Book ahead</h4><p>The Capri ferry and the Aenaria snorkel both want reservations a few days out — and re-check ferry times the day before, they move.</p></div>
+    <div class="lc"><h4>🍷 The rhythm</h4><p>Beach by day, shower &amp; change at base, then a slow dinner. Dinners are intentionally left open — we lock them day by day.</p></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wv">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fbf7ef" d="M0,30 C360,70 720,0 1080,30 C1260,45 1350,40 1440,28 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
+  <h3>Buon viaggio 🍋</h3>
+  <p>Sant'Angelo · 24 June – 1 July 2026. Beaches, boats, and long tables by the sea — the shortlist's inside, the nights are yours to pick.</p>
+  <div class="legend">Tap a day to expand · pins open in Google Maps · two sea days are flippable</div>
+</footer>
+
+<script>
+  // expand / collapse days
+  document.querySelectorAll('.day-top').forEach(function(t){
+    t.addEventListener('click', function(){ t.parentElement.classList.toggle('open'); });
+  });
+
+  // flip Capri <-> Boat across days 25 & 30 and the glance cards
+  var slot = 'A'; // A = Capri on 25 / Boat on 30 (default)
+  var btn = document.getElementById('flipBtn');
+  function render(){
+    // show the matching .seacontent inside each day
+    document.querySelectorAll('#d25 .seacontent').forEach(function(el){
+      el.hidden = (el.dataset.slot !== slot);
+    });
+    document.querySelectorAll('#d30 .seacontent').forEach(function(el){
+      el.hidden = (el.dataset.slot === slot); // day 30 is opposite
+    });
+    // headers
+    document.querySelectorAll('#d25 [data-slot]').forEach(function(el){
+      if(el.classList.contains('seacontent')) return;
+      el.style.display = (el.dataset.slot===slot)?'':'none';
+    });
+    document.querySelectorAll('#d30 [data-slot]').forEach(function(el){
+      if(el.classList.contains('seacontent')) return;
+      el.style.display = (el.dataset.slot===slot)?'none':'';
+    });
+    // glance chips
+    var capri25 = (slot==='A');
+    document.getElementById('t25').textContent = capri25 ? 'Capri' : 'Boat tour';
+    document.getElementById('t30').textContent = capri25 ? 'Boat tour' : 'Capri';
+  }
+  btn.addEventListener('click', function(){ slot = (slot==='A')?'B':'A'; render(); });
+  render();
+</script>
+
+</body>
+</html>
